@@ -1,15 +1,16 @@
-$(document).ready(function() {
-  $("#formOne").submit(function(event) {
-    const pNounInput = $("input#pluralNounOne").val();
-    const verbInput = $("input#verbOne").val();
-    const adverbInput = $("input#adverbOne").val();
-
-    $(".pNoun").append(pNounInput);
-    $(".verb").append(verbInput);
-    $(".adverb").append(adverbInput);
-
-    $("#story").show();
-
-    event.preventDefault();
-  });
+$(document).ready(function() { 
+    let madArray = [];
+    $("#formOne").submit(function(event) {
+      event.preventDefault(); 
+      madArray.push($("#pluralNounOne").val());
+      madArray.push($("#verbOne").val());
+      madArray.push($("#adverbOne").val());
+      spanOutput = $("span").toArray();
+      let counter = 0;
+      madArray.forEach(function(input) {
+        $(spanOutput[counter]).text(input);
+        counter++;
+      });
+      $("#story").show();
+    });
 });
